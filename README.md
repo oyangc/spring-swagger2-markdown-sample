@@ -19,15 +19,15 @@ pom.xml加入
 ```java
 @Bean
 public Docket docket() {
-   return new Docket(DocumentationType.SWAGGER_2)
-                 .apiInfo(apiInfo())
-                 /*		扫描接口配置		*/
-                 .select()
-                 .apis(RequestHandlerSelectors.basePackage("com.oyangc.swaggersample.comtroller"))
-                 .paths(PathSelectors.ant("/**"))
-                 .build();
-                  /*		扫描接口配置		*/
-}
+        return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        /*		扫描接口配置		*/
+        .select()
+        .apis(RequestHandlerSelectors.basePackage("com.oyangc.swaggersample.comtroller"))
+        .paths(PathSelectors.ant("/**"))
+        .build();
+        /*		扫描接口配置		*/
+        }
 ```
 启动服务之后可以访问
 http://localhost:8080/swagger-ui.html
@@ -44,7 +44,7 @@ pom.xml加入
     <scope>test</scope>
 </dependency>
 <dependency>
-    <groupId>org.springframework.restdocs</groupId>
+<groupId>org.springframework.restdocs</groupId>
     <artifactId>spring-restdocs-mockmvc</artifactId>
     <version>2.0.3.RELEASE</version>
     <scope>test</scope>
@@ -57,30 +57,34 @@ pom.xml加入
 </dependency>
 ```
 
-- 1、运行测试类SwaggerToMarkdownTest中的swaggerGenMd方法，直接生成当前工程的md文档
-- 2、运行测试类SwaggerToMarkdownTest中的mdByUrl方法，通过制定url生成md文档
+- 方法1)、运行测试类SwaggerToMarkdownTest中的swaggerGenMd方法，直接生成当前工程的md文档
+
+- 方法2)、运行测试类SwaggerToMarkdownTest中的mdByUrl方法，通过制定url生成md文档
 
 ### 方式二、使用npm的swagger-markdown生成markdown
 官网：https://www.npmjs.com/package/swagger-markdown
 
 http://localhost:8080/swagger-ui.html
 
-方式一、在线json生成markdown
+- 方法1)、在线json生成markdown
+```
 复制http://localhost:8080/v2/api-docs 内容
 使用https://swagger-markdown-ui.netlify.app/ 生成md文件
-
-方式二、本地安装swagger-markdown
-复制http://localhost:8080/v2/api-docs内容
+```
+- 方法2)、本地安装swagger-markdown
+```
+复制http://localhost:8080/v2/api-docs 内容
 在线json转成yml（https://www.bejson.com/json/json2yaml/）
 存到本地文件test.yml
-
+```
+```sh
 安装：swagger-markdown
 $ npm install -g swagger-markdown
 生成md文件
 $ swagger-markdown -i test.yml -o test.md
 或
 $ swagger-markdown.cmd -i test.yml -o test.md
-
+```
 完成。
 
 
