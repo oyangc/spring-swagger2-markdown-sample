@@ -1,0 +1,69 @@
+# 如果觉得好用，请收藏或则分享本站
+swagger: '2.0'
+info:
+  title: spring-swagger2-markdown-sample模块接口文档
+  contact: {}
+  license: {}
+host: 'localhost:8080'
+basePath: /
+tags:
+  - name: client-api-controller
+    description: Client Api Controller
+paths:
+  '/api/v1/channel/startRecord/{appId}/{channelName}':
+    post:
+      tags:
+        - client-api-controller
+      summary: startRecord
+      operationId: startRecordUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: appId
+          in: path
+          description: appId
+          required: true
+          type: string
+        - name: channelName
+          in: path
+          description: channelName
+          required: true
+          type: string
+        - in: body
+          name: record
+          description: record
+          required: true
+          schema:
+            $ref: '#/definitions/RecordParam'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            additionalProperties:
+              type: object
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+        - '': []
+      deprecated: false
+securityDefinitions:
+  '':
+    type: oauth2
+definitions:
+  RecordParam:
+    type: object
+    properties:
+      streamId:
+        type: string
+      vrecordType:
+        type: string
+    title: RecordParam

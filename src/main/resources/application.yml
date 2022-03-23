@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+# swagger 配置
+swagger:
+  title: spring-swagger2-markdown-sample模块接口文档
+  license: Powered By xxx
+  licenseUrl: https://xxx.com
+  authorization:
+    name: oauth2
+    auth-regex: ^.*$
+    authorization-scope-list:
+      - scope: server
+        description: 客户端授权范围
+    token-url-list:
+      - http://localhost:8080/auth/oauth/token
